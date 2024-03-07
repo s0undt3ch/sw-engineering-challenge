@@ -89,7 +89,7 @@ We value clean code that works and that follows industry-wide standards. Be read
 
 **Test coverage**
 
-The "that works" part in the topic above cannot be expressed with 100% certainty unless we have good test coverage. Feel free to include some while implementing your solution.
+The "that works" part in the topic above cannot be expressed with 100% certainty unless we have good test coverage. Feel free to include some while implementing your solution
 
 **Codebase organization, modularization, and coupling**
 
