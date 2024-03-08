@@ -85,16 +85,24 @@ Ah, before we forget (again), we've also found some JSON files that seem to be f
 
 **Code cohesion, quality, clearness, and correctness**
 
-We value clean code that works and that follows industry-wide standards. Be ready to bring your best programming skills to the table
+We value clean code that works and that follows industry-wide standards. Be ready to bring your best programming skills to the table.
 
 **Test coverage**
 
-The "that works" part in the topic above cannot be expressed with 100% certainty unless we have good test coverage. Feel free to include some while implementing your solution
+The "that works" part in the topic above cannot be expressed with 100% certainty unless we have good test coverage. Feel free to include some while implementing your solution.
 
 **Codebase organization, modularization, and coupling**
 
-In such a dynamic and fast-paced environment like ours, we always keep an eye out for scalability and also for eventual strategic swings and changes of priority in our product offerings. In a scenario like that, good modularization and low coupling are two critical aspects that allow us to move fast without breaking things
+In such a dynamic and fast-paced environment like ours, we always keep an eye out for scalability and also for eventual strategic swings and changes of priority in our product offerings. In a scenario like that, good modularization and low coupling are two critical aspects that allow us to move fast without breaking things.
 
 **Engineering principles and practices**
 
-Sometimes it's good to know the theoretical principles behind certain practices, feel free to bring some of the patterns you may judge necessary when implementing the solution
+Sometimes it's good to know the theoretical principles behind certain practices, feel free to bring some of the patterns you may judge necessary when implementing the solution.
+
+## Time limits
+
+The recommended time to implement this challenge is two days. We're aware, though, that several aspects may impact your velocity, such as time dedicated per day, programming experience, and so on. Feel free to dedicate as much effort to it as you find relevant, but bear in mind that a fixed deadline may be provided at the moment we provide you with this challenge.
+
+## Programming language, tech stack, etc
+
+Unless told otherwise, feel free to use your favorite programming language and tech stack to implement this challenge.
