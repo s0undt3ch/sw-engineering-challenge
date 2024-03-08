@@ -1,6 +1,6 @@
 # Software Engineering Challenge, by Bloqit
 
-Yesterday morning, when we showed up to work at 9ish, we noticed that all our codebases suddenly **disappeared** (yes, including the "serverless" stuff) and, to make matters worse, all our staff had a strong and collective case of amnesia (which, funny enough, only extends to the work-related subjects). Our CTO Ricardo, though, still has some flashes of our domain model. He vaguely remembers that we had a thing called `Bloq`, which each contained many `Lockers` (doors), which, in turn, could contain a thing called `Rent` (parcel) from time to time. After this short description, our engineering team also started to have some memory flashes and managed to put together some basic properties of each entity:
+Yesterday morning, when we showed up to work at 9ish, we noticed that all our codebases suddenly **disappeared** (yes, including the "serverless" stuff) and, to make matters worse, all our staff had a strong and collective case of amnesia (which, funny enough, only extends to the work-related subjects). Our CTO, though, still has some flashes of our domain model. He vaguely remembers that we had a thing called `Bloq`, which each contained many `Lockers` (doors), which, in turn, could contain a thing called `Rent` (parcel) from time to time. After this short description, our engineering team also started to have some memory flashes and managed to put together some basic properties of each entity:
 
 ```graphql
 enum RentStatus {
