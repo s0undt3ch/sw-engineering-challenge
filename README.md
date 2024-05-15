@@ -73,7 +73,11 @@ erDiagram
     }
 ```
 
+
+
 When they headed off to start coding this all over again, though, they realized that **they can't code!!!**. Thankfully we have you, dear candidate, to implement our API from scratch all over again 🙌🏽
+
+Remember: Bloqit is a company that builds software to assist first, middle, and last-mile deliveries. Therefore, our main goal with the aforementioned API is to allow our consumers to deposit (drop-off) and retrieve (pick-up) parcels from a compartment (locker / door), so keep it in mind when implementing the code.
 
 ## The challenge
 
