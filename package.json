@@ -1,0 +1,11 @@
+{
+  "name": "bloq-it-sw-challenge",
+  "version": "1.0.0",
+  "description": "Bloq.it SW Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pedro Algarvio",
+  "license": "Apache-2.0"
+}
