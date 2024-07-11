@@ -15,16 +15,19 @@
     "strict": true,
     "noImplicitAny": true,
     "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "tsc-alias": {
     "resolveFullPaths": true,
     "verbose": false
   },
   "include": [
-    "src"
+    "src",
+    "data",
   ],
   "exclude": [
-    "node_modules"
+    "./node_modules",
+    "./test"
   ]
 }

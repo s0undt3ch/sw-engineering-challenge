@@ -27,3 +27,7 @@ middleware on the main router object.
 The approach taken for this task has been the simplest/fastest one.
 Obviously, depending on the problem getting solved, and myself knowing more about async support in Node, this might not
 be the best approach, but so far, it's one that appears to be getting me closer to a solution to the task.
+
+## Tests
+
+We now have a basic test which only tests the `/` route, not API endpoint tests just yet.
