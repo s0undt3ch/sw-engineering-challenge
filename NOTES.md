@@ -21,3 +21,9 @@ TESTS! I need to figure out tests.
 
 Each controller now defines it's own router instance which is the only exported object that will, in turn, be used as a
 middleware on the main router object.
+
+## Sync vs Async
+
+The approach taken for this task has been the simplest/fastest one.
+Obviously, depending on the problem getting solved, and myself knowing more about async support in Node, this might not
+be the best approach, but so far, it's one that appears to be getting me closer to a solution to the task.
