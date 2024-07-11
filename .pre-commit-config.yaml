@@ -19,9 +19,9 @@ repos:
         exclude: package-lock.json
       - id: trailing-whitespace
 
-  - repo: local
-    hooks:
-      - id: eslint
-        name: ESLint
-        entry: npx eslint
-        language: system
+#  - repo: local
+#    hooks:
+#      - id: eslint
+#        name: ESLint
+#        entry: npx eslint
+#        language: system

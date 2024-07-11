@@ -1,15 +1,25 @@
 import { Request, Response } from 'express';
+import { getBloqs } from './models/bloqs';
+import { getLockers } from './models/lockers';
+import { getRents } from './models/rents';
 
 
-export const getTest = (req: Request, res: Response) => {
+export const getAllBloqs = (req: Request, res: Response) => {
  res.json({
-   message: 'Hello World',
+   message: getBloqs(),
  });
 };
 
 
-export const getAnotherTest = (req: Request, res: Response) => {
+export const getAllLockers = (req: Request, res: Response) => {
  res.json({
-   message: 'Another test route',
+   message: getLockers(),
+ });
+};
+
+
+export const getAllRents = (req: Request, res: Response) => {
+ res.json({
+   message: getRents(),
  });
 };

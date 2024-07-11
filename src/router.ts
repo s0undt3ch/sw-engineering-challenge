@@ -1,9 +1,10 @@
 import express from 'express';
-import { getAnotherTest, getTest } from '@/controller';
+import { getAllBloqs, getAllLockers, getAllRents } from './controller';
 
 
 export const router = express.Router();
 
 
-router.get('/test', getTest);
-router.get('/another-test', getAnotherTest);
+router.get('/bloqs', getAllBloqs);
+router.get('/lockers', getAllLockers);
+router.get('/rents', getAllRents);
