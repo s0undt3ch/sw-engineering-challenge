@@ -16,3 +16,8 @@ In theory, the data was loaded and cast to the right interface. I'll need to ver
 I'll need to make the controllers more modular, right now it's a single `controller.ts` which will obviously not
 scale.
 TESTS! I need to figure out tests.
+
+## Decoupling controllers
+
+Each controller now defines it's own router instance which is the only exported object that will, in turn, be used as a
+middleware on the main router object.

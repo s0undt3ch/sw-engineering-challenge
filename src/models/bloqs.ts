@@ -1,9 +1,9 @@
-import { load } from "../utils";
+import { load } from "@/utils";
 
 interface Bloq {
-  id: string
-  title: string
-  address: string
+  id: string;
+  title: string;
+  address: string;
 }
 
 export function getBloqs() {
