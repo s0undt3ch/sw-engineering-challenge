@@ -1,7 +1,4 @@
-import * as fs from 'fs';
-
-let cache = {}
-
+import * as fs from "fs";
 
 function isValidJSON(jsonString: string): boolean {
   try {
@@ -13,21 +10,17 @@ function isValidJSON(jsonString: string): boolean {
 }
 
 function getParsedData(jsonString: string) {
-    if (!cache[jsonString]) {
-      if (isValidJSON(jsonString)) {
-        cache[jsonString] = JSON.parse(jsonString);
-      } else {
-        // TODO: Better error reporting
-        console.log("Failed to load valid JSON");
-        return {}
-      }
-    }
-    return cache[jsonString];
+  if (isValidJSON(jsonString)) {
+    return JSON.parse(jsonString);
+  } else {
+    // TODO: Better error reporting
+    console.log("Failed to load valid JSON");
+    return {};
+  }
 }
 
-
-export function load(filepath: string): any {
+export function load(filepath: string) {
   // Read the file synchronously (for simplicity)
   const rawData: string = fs.readFileSync(filepath, "utf-8");
-  return getParsedData(rawData)
+  return getParsedData(rawData);
 }
