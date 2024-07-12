@@ -1,6 +1,6 @@
 import LockersDao from "../daos/locker.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
-import { CreateLockerDto } from "../dto/create.locker.dto";
+import { CreateLockerDto, LockerStatus } from "../dto/create.locker.dto";
 import { PutLockerDto } from "../dto/put.locker.dto";
 import { PatchLockerDto } from "../dto/patch.locker.dto";
 
@@ -31,6 +31,10 @@ class LockersService implements CRUD {
 
   async listByBloqId(bloqId: string, _limit: number, _page: number) {
     return LockersDao.getLockersByBloqId(bloqId);
+  }
+
+  async listByStatus(status: LockerStatus, _limit: number, _page: number) {
+    return LockersDao.getLockersByStatus(status);
   }
 }
 

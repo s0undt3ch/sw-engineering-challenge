@@ -38,6 +38,11 @@ class LockersController {
     log(await lockersService.deleteById(req.body.id));
     res.status(204).send();
   }
+
+  async listLockersByStatus(req: express.Request, res: express.Response) {
+    const lockers = await lockersService.listByStatus(req.body.status, 100, 0);
+    res.status(200).send(lockers);
+  }
 }
 
 export default new LockersController();

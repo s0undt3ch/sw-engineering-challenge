@@ -10,6 +10,11 @@ export class LockersRoutes extends CommonRoutesConfig {
   configureRoutes() {
     this.app.route(`/lockers`).get(LockersController.listLockers);
 
+    this.app
+      .route(`/lockers/status/:status`)
+      .all(LockersMiddleware.extractLockerStatus)
+      .get(LockersController.listLockersByStatus);
+
     this.app.param(`lockerId`, LockersMiddleware.extractLockerId);
     this.app
       .route(`/lockers/:lockerId`)

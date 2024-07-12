@@ -55,3 +55,10 @@ Next, relationships.
 ## First relationship
 
 Our API is now able to list the lockers that belong to a Bloq ID
+
+## Get lockers by status
+
+This approach allow the filtering to happen using the URL which, depending on what we want to support might be too
+narrow scoped.
+For a broader approach, consider allowing passing a JSON object which would then be used to do the filtering. Each key
+would be a field that we would compare values.

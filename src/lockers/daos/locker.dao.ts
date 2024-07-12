@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { CreateLockerDto } from "../dto/create.locker.dto";
+import { CreateLockerDto, LockerStatus } from "../dto/create.locker.dto";
 import { PutLockerDto } from "../dto/put.locker.dto";
 import { PatchLockerDto } from "../dto/patch.locker.dto";
 import debug from "debug";
@@ -77,6 +77,10 @@ class LockersDao {
 
   async getLockersByBloqId(bloqId: string) {
     return this.lockers.filter((locker) => locker.bloqId === bloqId);
+  }
+
+  async getLockersByStatus(status: LockerStatus) {
+    return this.lockers.filter((locker) => locker.status === status);
   }
 }
 

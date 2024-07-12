@@ -1,6 +1,7 @@
 import express from "express";
 import lockerService from "../services/lockers.service";
 import debug from "debug";
+import { LockerStatus } from "../dto/create.locker.dto";
 
 const log: debug.IDebugger = debug("app:lockers-controller");
 class LockersMiddleware {
@@ -48,6 +49,25 @@ class LockersMiddleware {
   ) {
     req.body.id = req.params.lockerId;
     next();
+  }
+
+  async extractLockerStatus(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ) {
+    const statusEnum =
+      req.params.status?.toUpperCase() as unknown as LockerStatus;
+    const indexOfS = Object.values(LockerStatus).indexOf(statusEnum);
+    if (indexOfS === -1) {
+      res.status(400).send({
+        error: `Locker status '${req.params.status}' does not exist`,
+      });
+    } else {
+      const status: keyof typeof LockerStatus = statusEnum;
+      req.body.status = status;
+      next();
+    }
   }
 }
 

@@ -36,4 +36,25 @@ describe("Lockers Endpoints Tests", function (): void {
     expect(res.status).toBe(200);
     expect(res.body as CreateLockerDto).toEqual(locker);
   });
+
+  test("GET /lockers/status/open has the 4 records", async function (): Promise<void> {
+    const res = await request(app).get("/lockers/status/open").send();
+    expect(res.status).toBe(200);
+    expect(res.body.length).toBe(4);
+  });
+
+  test("GET /lockers/status/closed has the 5 records", async function (): Promise<void> {
+    const res = await request(app).get("/lockers/status/closed").send();
+    expect(res.status).toBe(200);
+    expect(res.body.length).toBe(5);
+  });
+
+  test("GET /lockers/status/<wrong status> errors", async function (): Promise<void> {
+    const badStatus = "opens";
+    const res = await request(app).get(`/lockers/status/${badStatus}`).send();
+    expect(res.status).toBe(400);
+    expect(res.body).toEqual({
+      error: `Locker status '${badStatus}' does not exist`,
+    });
+  });
 });

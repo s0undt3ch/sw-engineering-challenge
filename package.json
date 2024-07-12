@@ -8,6 +8,7 @@
     "start": "tsc && node --unhandled-rejections=strict ./dist/server.js",
     "debug": "export DEBUG=* && npm run start",
     "dev": "NODE_ENV=development tsx watch src/server --unhandled-rejections=strict",
+    "dev-debug": "export DEBUG=* && npm run dev",
     "prepare": "husky install",
     "test": "jest"
   },
