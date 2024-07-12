@@ -36,4 +36,17 @@ describe("Bloqs Endpoints Tests", function (): void {
     expect(res.status).toBe(200);
     expect(res.body as CreateBloqDto).toEqual(bloq);
   });
+
+  test("GET /bloqs/<bloqID>/lockers", async function (): Promise<void> {
+    expect(bloqs).not.toHaveLength(0);
+    const bloq = bloqs[0];
+    if (bloq === undefined) {
+      fail("Could not load a Bloq");
+    }
+    const bloqId: string = bloq.id;
+    const res = await request(app).get(`/bloqs/${bloqId}/lockers`).send();
+    expect(res.status).toBe(200);
+    // TODO: We know that each bloq has 3 lockers, however, we should make this test less fragile
+    expect(res.body.length).toEqual(3);
+  });
 });

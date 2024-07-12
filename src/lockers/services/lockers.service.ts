@@ -28,6 +28,10 @@ class LockersService implements CRUD {
   async putById(id: string, resource: PutLockerDto) {
     return LockersDao.putLockerById(id, resource);
   }
+
+  async listByBloqId(bloqId: string, _limit: number, _page: number) {
+    return LockersDao.getLockersByBloqId(bloqId);
+  }
 }
 
 export default new LockersService();

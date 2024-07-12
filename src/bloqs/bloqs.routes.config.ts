@@ -24,6 +24,11 @@ export class BloqsRoutes extends CommonRoutesConfig {
 
     this.app.patch(`/bloqs/:bloqId`, [BloqsController.patch]);
 
+    this.app
+      .route(`/bloqs/:bloqId/lockers`)
+      .all(BloqsMiddleware.validateBloqExists)
+      .get(BloqsController.listBloqLockers);
+
     return this.app;
   }
 }

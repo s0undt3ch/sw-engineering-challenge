@@ -74,6 +74,10 @@ class LockersDao {
     this.lockers.splice(objIndex, 1);
     return `${lockerId} removed`;
   }
+
+  async getLockersByBloqId(bloqId: string) {
+    return this.lockers.filter((locker) => locker.bloqId === bloqId);
+  }
 }
 
 export default new LockersDao();

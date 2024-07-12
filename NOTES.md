@@ -51,3 +51,7 @@ Tests run again, though, no API tests yet.
 Used the approach taken with Bloqs to Lockers and Rents.
 It also includes basic tests like getting all and one by ID.
 Next, relationships.
+
+## First relationship
+
+Our API is now able to list the lockers that belong to a Bloq ID
