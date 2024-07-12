@@ -45,3 +45,9 @@ Let's adapt to this one
 
 The new How-To does in fact modularize the code, but it might be a lot to explain for this SW task.
 Tests run again, though, no API tests yet.
+
+## Mimic the Bloq approach to Lockers and Rents
+
+Used the approach taken with Bloqs to Lockers and Rents.
+It also includes basic tests like getting all and one by ID.
+Next, relationships.
