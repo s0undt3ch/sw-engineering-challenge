@@ -20,21 +20,16 @@ class BloqsController {
   }
 
   async createBloq(req: express.Request, res: express.Response) {
-    req.body.password = await argon2.hash(req.body.password);
     const bloqId = await bloqsService.create(req.body);
     res.status(201).send({ id: bloqId });
   }
 
   async patch(req: express.Request, res: express.Response) {
-    if (req.body.password) {
-      req.body.password = await argon2.hash(req.body.password);
-    }
     log(await bloqsService.patchById(req.body.id, req.body));
     res.status(204).send();
   }
 
   async put(req: express.Request, res: express.Response) {
-    req.body.password = await argon2.hash(req.body.password);
     log(await bloqsService.putById(req.body.id, req.body));
     res.status(204).send();
   }

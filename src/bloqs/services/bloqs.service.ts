@@ -28,10 +28,6 @@ class BloqsService implements CRUD {
   async putById(id: string, resource: PutBloqDto) {
     return BloqsDao.putBloqById(id, resource);
   }
-
-  async getBloqByEmail(email: string) {
-    return BloqsDao.getBloqByEmail(email);
-  }
 }
 
 export default new BloqsService();

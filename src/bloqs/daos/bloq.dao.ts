@@ -58,8 +58,11 @@ class BloqsDao {
         currentBloq[field] = bloq[field];
       }
     }
-    this.bloqs.splice(objIndex, 1, currentBloq);
-    return `${bloq.id} patched`;
+    if (currentBloq !== undefined) {
+      this.bloqs.splice(objIndex, 1, currentBloq);
+      return `${bloq.id} patched`;
+    }
+    return `${bloq.id} not patched`;
   }
 
   async removeBloqById(bloqId: string) {

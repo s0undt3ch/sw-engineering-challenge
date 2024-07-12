@@ -25,12 +25,18 @@ class BloqsMiddleware {
   ) {
     const bloqId = req.params.bloqId;
     log(`Validating Bloq by the ID of: ${bloqId}`);
-    const bloq = await bloqService.readById(bloqId);
-    if (bloq) {
-      next();
+    if (bloqId) {
+      const bloq = await bloqService.readById(bloqId);
+      if (bloq) {
+        next();
+      } else {
+        res.status(404).send({
+          error: `Bloq ${req.params.bloqId} not found`,
+        });
+      }
     } else {
-      res.status(404).send({
-        error: `Bloq ${req.params.bloqId} not found`,
+      res.status(400).send({
+        error: `Bloq 'bloqId' was not passed`,
       });
     }
   }

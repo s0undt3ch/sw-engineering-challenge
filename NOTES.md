@@ -40,3 +40,8 @@ need for structure and separation of responsibilities:
 - https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
 
 Let's adapt to this one
+
+## Too Much!?
+
+The new How-To does in fact modularize the code, but it might be a lot to explain for this SW task.
+Tests run again, though, no API tests yet.
