@@ -62,3 +62,8 @@ This approach allow the filtering to happen using the URL which, depending on wh
 narrow scoped.
 For a broader approach, consider allowing passing a JSON object which would then be used to do the filtering. Each key
 would be a field that we would compare values.
+
+## Focus... Enough Play.
+
+While learning new stuff is always awesome, we do have a goal to keep in mind.
+WE MUST DELIVER!
