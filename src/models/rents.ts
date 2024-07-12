@@ -2,25 +2,25 @@ import { load } from "../utils";
 
 enum RentStatus {
   CREATED = "CREATED",
-  WAITING_DROPOFF = "WAITING_PICKUP",
+  WAITING_DROPOFF = "WAITING_DROPOFF",
   WAITING_PICKUP = "WAITING_PICKUP",
-  DELIVERED = "DELIVERED"
+  DELIVERED = "DELIVERED",
 }
 
 enum RentSize {
-  XS = "XL",
+  XS = "XS",
   S = "S",
   M = "M",
   L = "L",
-  XL = "XL"
+  XL = "XL",
 }
 
 interface Rent {
-  id: string
-  lockerId: string
-  weight: number
-  size: RentSize
-  status: RentStatus
+  id: string;
+  lockerId: string;
+  weight: number;
+  size: RentSize;
+  status: RentStatus;
 }
 
 export function getRents() {
