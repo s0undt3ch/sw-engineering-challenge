@@ -31,3 +31,12 @@ be the best approach, but so far, it's one that appears to be getting me closer 
 ## Tests
 
 We now have a basic test which only tests the `/` route, not API endpoint tests just yet.
+
+## Found a new How-To
+
+Found a new How-To series that makes it easier to wrap my head around my (un)knowledge of Node+Typescript+Express and my
+need for structure and separation of responsibilities:
+
+- https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
+
+Let's adapt to this one

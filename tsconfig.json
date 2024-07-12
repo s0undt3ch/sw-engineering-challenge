@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
@@ -8,15 +9,14 @@
         "./src/*"
       ]
     },
-    "outDir": "dist",
-    "noEmit": true,
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true
+    "inlineSourceMap": true
   },
   "tsc-alias": {
     "resolveFullPaths": true,
