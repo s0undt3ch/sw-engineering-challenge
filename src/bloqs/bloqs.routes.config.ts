@@ -10,6 +10,11 @@ export class BloqsRoutes extends CommonRoutesConfig {
   configureRoutes() {
     this.app.route(`/bloqs`).get(BloqsController.listBloqs);
 
+    this.app.post(`/bloqs`, [
+      BloqsMiddleware.validateBloqDoesNotExist,
+      BloqsController.createBloq,
+    ]);
+
     this.app.param(`bloqId`, BloqsMiddleware.extractBloqId);
     this.app
       .route(`/bloqs/:bloqId`)

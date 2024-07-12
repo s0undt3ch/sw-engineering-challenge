@@ -67,3 +67,8 @@ would be a field that we would compare values.
 
 While learning new stuff is always awesome, we do have a goal to keep in mind.
 WE MUST DELIVER!
+
+## Bloqs controller full(ish) coverage
+
+Added tests for PUT and PATCH for the Bloqs controller, obviously, there's a few more scenarios which would require
+tests, like, do we allow Bloq's to change their ID's? And if so, support updating relationships, test it, etc...

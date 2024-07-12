@@ -9,7 +9,7 @@ class BloqsMiddleware {
     res: express.Response,
     next: express.NextFunction,
   ) {
-    if (req.body && req.body.bloqId && req.body.title && req.body.address) {
+    if (req.body && req.body.id && req.body.title && req.body.address) {
       next();
     } else {
       res.status(400).send({
@@ -37,6 +37,29 @@ class BloqsMiddleware {
     } else {
       res.status(400).send({
         error: `Bloq 'bloqId' was not passed`,
+      });
+    }
+  }
+
+  async validateBloqDoesNotExist(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ) {
+    const bloqId = req.body.id;
+    log(`Checking for existing Bloq by the ID of: ${bloqId}`);
+    if (bloqId) {
+      const bloq = await bloqService.readById(bloqId);
+      if (bloq) {
+        res.status(400).send({
+          error: `Bloq ${req.params.bloqId} already exists`,
+        });
+      } else {
+        next();
+      }
+    } else {
+      res.status(400).send({
+        error: `Bloq 'id' was not passed`,
       });
     }
   }
