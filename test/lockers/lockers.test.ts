@@ -3,6 +3,7 @@ import app from "../../src/app";
 import request from "supertest";
 import { describe, test } from "@jest/globals";
 import { CreateLockerDto } from "../../src/lockers/dto/create.locker.dto";
+import lockerDao from "../../src/lockers/daos/locker.dao";
 
 describe("Lockers Endpoints Tests", function (): void {
   const lockers: CreateLockerDto[] = [];
@@ -14,6 +15,11 @@ describe("Lockers Endpoints Tests", function (): void {
     for (const entry of jsonData) {
       lockers.push(entry as CreateLockerDto);
     }
+  });
+
+  beforeEach(function () {
+    lockerDao.lockers.length = 0;
+    lockerDao.loadExistingData();
   });
 
   test("GET /lockers has the 3 default records", async function (): Promise<void> {
@@ -35,6 +41,23 @@ describe("Lockers Endpoints Tests", function (): void {
     const res = await request(app).get(`/lockers/${lockerId}`).send();
     expect(res.status).toBe(200);
     expect(res.body as CreateLockerDto).toEqual(locker);
+  });
+
+  test("DELETE /lockers/<lockerID> actually deletes the record", async function (): Promise<void> {
+    // TODO: For the sake of SW delivery time, we won't be checking cascade deletes
+    expect(lockers).not.toHaveLength(0);
+    const locker = lockers[1];
+    if (locker === undefined) {
+      fail("Could not load a Locker");
+    }
+    const lockerId: string = locker.id;
+    const currentLockerCount = lockers.length;
+    const deleteRes = await request(app).delete(`/lockers/${lockerId}`).send();
+    expect(deleteRes.status).toBe(204);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount - 1);
   });
 
   test("GET /lockers/status/open has the 4 records", async function (): Promise<void> {
