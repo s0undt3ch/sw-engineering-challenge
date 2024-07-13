@@ -82,6 +82,10 @@ class LockersDao {
   async getLockersByStatus(status: LockerStatus) {
     return this.lockers.filter((locker) => locker.status === status);
   }
+
+  async getLockersByOccupancy(occupied: boolean) {
+    return this.lockers.filter((locker) => locker.isOccupied === occupied);
+  }
 }
 
 export default new LockersDao();

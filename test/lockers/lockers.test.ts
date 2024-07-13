@@ -80,4 +80,16 @@ describe("Lockers Endpoints Tests", function (): void {
       error: `Locker status '${badStatus}' does not exist`,
     });
   });
+
+  test("GET /lockers/occupancy/free has the 6 records", async function (): Promise<void> {
+    const res = await request(app).get("/lockers/occupancy/free").send();
+    expect(res.status).toBe(200);
+    expect(res.body.length).toBe(6);
+  });
+
+  test("GET /lockers/occupancy/occupied has the 3 records", async function (): Promise<void> {
+    const res = await request(app).get("/lockers/occupancy/occupied").send();
+    expect(res.status).toBe(200);
+    expect(res.body.length).toBe(3);
+  });
 });

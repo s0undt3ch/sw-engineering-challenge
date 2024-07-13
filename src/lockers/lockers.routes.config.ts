@@ -15,6 +15,20 @@ export class LockersRoutes extends CommonRoutesConfig {
       .all(LockersMiddleware.extractLockerStatus)
       .get(LockersController.listLockersByStatus);
 
+    this.app.route(`/lockers/occupancy/free`).get(async function (
+      req: express.Request,
+      res: express.Response,
+    ) {
+      return await LockersController.listLockersByOccupancy(false, req, res);
+    });
+
+    this.app.route(`/lockers/occupancy/occupied`).get(async function (
+      req: express.Request,
+      res: express.Response,
+    ) {
+      return await LockersController.listLockersByOccupancy(true, req, res);
+    });
+
     this.app.param(`lockerId`, LockersMiddleware.extractLockerId);
     this.app
       .route(`/lockers/:lockerId`)

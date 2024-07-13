@@ -36,6 +36,10 @@ class LockersService implements CRUD {
   async listByStatus(status: LockerStatus, _limit: number, _page: number) {
     return LockersDao.getLockersByStatus(status);
   }
+
+  async listByOccupancy(occupied: boolean, _limit: number, _page: number) {
+    return LockersDao.getLockersByOccupancy(occupied);
+  }
 }
 
 export default new LockersService();

@@ -43,6 +43,15 @@ class LockersController {
     const lockers = await lockersService.listByStatus(req.body.status, 100, 0);
     res.status(200).send(lockers);
   }
+
+  async listLockersByOccupancy(
+    occupied: boolean,
+    req: express.Request,
+    res: express.Response,
+  ) {
+    const lockers = await lockersService.listByOccupancy(occupied, 100, 0);
+    res.status(200).send(lockers);
+  }
 }
 
 export default new LockersController();

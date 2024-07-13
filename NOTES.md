@@ -72,3 +72,8 @@ WE MUST DELIVER!
 
 Added tests for PUT and PATCH for the Bloqs controller, obviously, there's a few more scenarios which would require
 tests, like, do we allow Bloq's to change their ID's? And if so, support updating relationships, test it, etc...
+
+## Debatable endpoints
+
+Added support and tests for `/lockers/occupancy/{free,occupied}` endpoints but the endpoints paths is up for
+discussion.
