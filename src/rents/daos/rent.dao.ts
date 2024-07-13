@@ -53,7 +53,7 @@ class RentsDao {
       (obj: { id: string }) => obj.id === rentId,
     );
     const currentRent = this.rents[objIndex];
-    const allowedPatchFields = ["title", "address"];
+    const allowedPatchFields = ["lockerId", "weight", "size", "status"];
     for (const field of allowedPatchFields) {
       if (field in rent) {
         // @ts-expect-error: Implicit Any

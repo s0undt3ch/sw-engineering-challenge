@@ -2,31 +2,24 @@ import debug from "debug";
 import express from "express";
 
 import bloqService from "../../bloqs/services/bloqs.service";
+import commonMiddleware from "../../common/middleware/common.middleware";
 import { LockerStatus } from "../dto/create.locker.dto";
 import lockerService from "../services/lockers.service";
 
 const log: debug.IDebugger = debug("app:lockers-controller");
+
 class LockersMiddleware {
   async validateRequiredLockerPostBodyFields(
     req: express.Request,
     res: express.Response,
     next: express.NextFunction,
   ) {
-    const requiredFields = ["id", "bloqId", "status", "isOccupied"];
-    const missingFields: string[] = [];
-    for (const fieldName of requiredFields) {
-      log(`Checking field ${fieldName}: ${req.body[fieldName]}`);
-      if (req.body[fieldName] === undefined) {
-        missingFields.push(fieldName);
-      }
-    }
-    if (missingFields.length > 0) {
-      res.status(400).send({
-        error: `Missing one or more required fields: ${missingFields.join(", ")}`,
-      });
-    } else {
-      next();
-    }
+    commonMiddleware.validateRequiredBodyFields(
+      ["id", "bloqId", "status", "isOccupied"],
+      req,
+      res,
+      next,
+    );
   }
 
   async validateRequiredLockerPutBodyFields(
@@ -34,21 +27,12 @@ class LockersMiddleware {
     res: express.Response,
     next: express.NextFunction,
   ) {
-    const requiredFields = ["bloqId", "status", "isOccupied"];
-    const missingFields: string[] = [];
-    for (const fieldName of requiredFields) {
-      log(`Checking field ${fieldName}: ${req.body[fieldName]}`);
-      if (req.body[fieldName] === undefined) {
-        missingFields.push(fieldName);
-      }
-    }
-    if (missingFields.length > 0) {
-      res.status(400).send({
-        error: `Missing one or more required fields: ${missingFields.join(", ")}`,
-      });
-    } else {
-      next();
-    }
+    commonMiddleware.validateRequiredBodyFields(
+      ["bloqId", "status", "isOccupied"],
+      req,
+      res,
+      next,
+    );
   }
 
   async validateLockerExists(

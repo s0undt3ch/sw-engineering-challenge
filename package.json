@@ -52,6 +52,12 @@
     "*.{js,css,md}": "prettier --write"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "collectCoverageFrom": ["./src/**"],
+    "coverageThreshold": {
+      "global": {
+        "lines": 90
+      }
+    }
   }
 }

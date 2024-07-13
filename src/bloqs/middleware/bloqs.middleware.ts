@@ -1,22 +1,23 @@
 import debug from "debug";
 import express from "express";
 
+import commonMiddleware from "../../common/middleware/common.middleware";
 import bloqService from "../services/bloqs.service";
 
 const log: debug.IDebugger = debug("app:bloqs-controller");
+
 class BloqsMiddleware {
   async validateRequiredBloqBodyFields(
     req: express.Request,
     res: express.Response,
     next: express.NextFunction,
   ) {
-    if (req.body && req.body.id && req.body.title && req.body.address) {
-      next();
-    } else {
-      res.status(400).send({
-        error: `Missing one or more required fields.`,
-      });
-    }
+    commonMiddleware.validateRequiredBodyFields(
+      ["id", "title", "address"],
+      req,
+      res,
+      next,
+    );
   }
 
   async validateBloqExists(

@@ -177,7 +177,7 @@ describe("Lockers Endpoints Tests", function (): void {
 
     const getRes2 = await request(app).get(`/lockers/${lockerId}`).send();
     expect(getRes2.status).toBe(200);
-    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes2.body.status).toEqual("OPEN");
     expect(getRes2.body.isOccupied).toEqual(false);
 
     const listRes = await request(app).get("/lockers").send();
@@ -216,7 +216,7 @@ describe("Lockers Endpoints Tests", function (): void {
 
     const getRes2 = await request(app).get(`/lockers/${lockerId}`).send();
     expect(getRes2.status).toBe(200);
-    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes2.body.status).toEqual("OPEN");
     expect(getRes2.body.isOccupied).toEqual(false);
 
     const listRes = await request(app).get("/lockers").send();

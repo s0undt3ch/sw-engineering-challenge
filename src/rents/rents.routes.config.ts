@@ -12,6 +12,13 @@ export class RentsRoutes extends CommonRoutesConfig {
   configureRoutes() {
     this.app.route(`/rents`).get(RentsController.listRents);
 
+    this.app.post(`/rents`, [
+      RentsMiddleware.validateRentDoesNotExist,
+      RentsMiddleware.validateRequiredRentPostBodyFields,
+      RentsMiddleware.validateLockerExists,
+      RentsController.createRent,
+    ]);
+
     this.app.param(`rentId`, RentsMiddleware.extractRentId);
     this.app
       .route(`/rents/:rentId`)
@@ -20,7 +27,8 @@ export class RentsRoutes extends CommonRoutesConfig {
       .delete(RentsController.removeRent);
 
     this.app.put(`/rents/:rentId`, [
-      RentsMiddleware.validateRequiredRentBodyFields,
+      RentsMiddleware.validateRequiredRentPutBodyFields,
+      RentsMiddleware.validateLockerExists,
       RentsController.put,
     ]);
 
