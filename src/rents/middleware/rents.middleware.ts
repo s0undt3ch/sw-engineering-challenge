@@ -3,6 +3,7 @@ import express from "express";
 
 import commonMiddleware from "../../common/middleware/common.middleware";
 import lockerService from "../../lockers/services/lockers.service";
+import { RentSize, RentStatus } from "../dto/create.rent.dto";
 import rentService from "../services/rents.service";
 
 const log: debug.IDebugger = debug("app:rents-controller");
@@ -87,6 +88,42 @@ class RentsMiddleware {
   ) {
     req.body.id = req.params.rentId;
     next();
+  }
+
+  async extractRentStatus(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ) {
+    const statusEnum = req.body.status?.toUpperCase() as unknown as RentStatus;
+    const indexOfS = Object.values(RentStatus).indexOf(statusEnum);
+    if (indexOfS === -1) {
+      res.status(400).send({
+        error: `Rent status '${req.params.status}' does not exist`,
+      });
+    } else {
+      const status: keyof typeof RentStatus = statusEnum;
+      req.body.status = status;
+      next();
+    }
+  }
+
+  async extractRentSize(
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ) {
+    const sizeEnum = req.body.size?.toUpperCase() as unknown as RentSize;
+    const indexOfS = Object.values(RentSize).indexOf(sizeEnum);
+    if (indexOfS === -1) {
+      res.status(400).send({
+        error: `Rent size '${req.params.size}' does not exist`,
+      });
+    } else {
+      const size: keyof typeof RentSize = sizeEnum;
+      req.body.size = size;
+      next();
+    }
   }
 
   async validateLockerExists(

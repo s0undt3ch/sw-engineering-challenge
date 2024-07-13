@@ -16,6 +16,8 @@ export class RentsRoutes extends CommonRoutesConfig {
       RentsMiddleware.validateRentDoesNotExist,
       RentsMiddleware.validateRequiredRentPostBodyFields,
       RentsMiddleware.validateLockerExists,
+      RentsMiddleware.extractRentStatus,
+      RentsMiddleware.extractRentSize,
       RentsController.createRent,
     ]);
 
@@ -29,6 +31,8 @@ export class RentsRoutes extends CommonRoutesConfig {
     this.app.put(`/rents/:rentId`, [
       RentsMiddleware.validateRequiredRentPutBodyFields,
       RentsMiddleware.validateLockerExists,
+      RentsMiddleware.extractRentStatus,
+      RentsMiddleware.extractRentSize,
       RentsController.put,
     ]);
 
