@@ -90,3 +90,16 @@ Using `/vN` URL prefixes or "a la" GitHub with a header...
 ## Rents controller full(ish) coverage
 
 Initial test coverage for all supported HTTP methods in place.
+
+## After thoughts
+
+There's a lot of room for improvement, and a lot of knowledge to acquire:
+
+- There's no "state machine" enforcing rent status, ie, it should not be possible to go from `DELIVERED` to
+  `WAITING_PICKUP`, etc.
+- Validating fields is cumbersome right now and you need to implement checks for each field. I'm pretty sure there are
+  some really good schema and validation libraries out there.
+- There's no API documentation! I'm sure there's also a library which (auto)generates API documentation for us in a
+  known and widely adopted format like, ie, OpenAPI.
+
+All in all, I had fun! Thank You!
