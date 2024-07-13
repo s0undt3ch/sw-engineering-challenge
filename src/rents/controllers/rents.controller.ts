@@ -1,10 +1,10 @@
+import debug from "debug";
 import express from "express";
 
 // we import our newly created rent services
 import rentsService from "../services/rents.service";
 
 // we use debug with a custom context as described in Part 1
-import debug from "debug";
 
 const log: debug.IDebugger = debug("app:rents-controller");
 

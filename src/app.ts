@@ -1,14 +1,18 @@
-import express from "express";
-import "dotenv/config";
 import * as http from "http";
-import * as winston from "winston";
-import * as expressWinston from "express-winston";
+
 import cors from "cors";
-import { CommonRoutesConfig } from "./common/common.routes.config";
+import debug from "debug";
+import dotenv from "dotenv";
+import express from "express";
+import * as expressWinston from "express-winston";
+import * as winston from "winston";
+
 import { BloqsRoutes } from "./bloqs/bloqs.routes.config";
+import { CommonRoutesConfig } from "./common/common.routes.config";
 import { LockersRoutes } from "./lockers/lockers.routes.config";
 import { RentsRoutes } from "./rents/rents.routes.config";
-import debug from "debug";
+
+dotenv.config();
 
 const app: express.Application = express();
 const routes: Array<CommonRoutesConfig> = [];

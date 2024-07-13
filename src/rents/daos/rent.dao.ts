@@ -1,8 +1,10 @@
 import * as fs from "fs";
-import { CreateRentDto } from "../dto/create.rent.dto";
-import { PutRentDto } from "../dto/put.rent.dto";
-import { PatchRentDto } from "../dto/patch.rent.dto";
+
 import debug from "debug";
+
+import { CreateRentDto } from "../dto/create.rent.dto";
+import { PatchRentDto } from "../dto/patch.rent.dto";
+import { PutRentDto } from "../dto/put.rent.dto";
 
 const log: debug.IDebugger = debug("app:rents:in-memory-dao");
 

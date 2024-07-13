@@ -1,8 +1,9 @@
-import express from "express";
-import lockerService from "../services/lockers.service";
-import bloqService from "../../bloqs/services/bloqs.service";
 import debug from "debug";
+import express from "express";
+
+import bloqService from "../../bloqs/services/bloqs.service";
 import { LockerStatus } from "../dto/create.locker.dto";
+import lockerService from "../services/lockers.service";
 
 const log: debug.IDebugger = debug("app:lockers-controller");
 class LockersMiddleware {

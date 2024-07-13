@@ -1,6 +1,7 @@
-import app from "../src/app";
-import request from "supertest";
 import { describe, test } from "@jest/globals";
+import request from "supertest";
+
+import app from "../src/app";
 
 describe("App Endpoints Tests", function (): void {
   describe("GET ROUTES", function (): void {

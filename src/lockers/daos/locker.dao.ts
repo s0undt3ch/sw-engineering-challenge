@@ -1,8 +1,10 @@
 import * as fs from "fs";
-import { CreateLockerDto, LockerStatus } from "../dto/create.locker.dto";
-import { PutLockerDto } from "../dto/put.locker.dto";
-import { PatchLockerDto } from "../dto/patch.locker.dto";
+
 import debug from "debug";
+
+import { CreateLockerDto, LockerStatus } from "../dto/create.locker.dto";
+import { PatchLockerDto } from "../dto/patch.locker.dto";
+import { PutLockerDto } from "../dto/put.locker.dto";
 
 const log: debug.IDebugger = debug("app:lockers:in-memory-dao");
 

@@ -1,8 +1,8 @@
-import LockersDao from "../daos/locker.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
+import LockersDao from "../daos/locker.dao";
 import { CreateLockerDto, LockerStatus } from "../dto/create.locker.dto";
-import { PutLockerDto } from "../dto/put.locker.dto";
 import { PatchLockerDto } from "../dto/patch.locker.dto";
+import { PutLockerDto } from "../dto/put.locker.dto";
 
 class LockersService implements CRUD {
   async create(resource: CreateLockerDto) {

@@ -1,8 +1,10 @@
 import * as fs from "fs";
-import { CreateBloqDto } from "../dto/create.bloq.dto";
-import { PutBloqDto } from "../dto/put.bloq.dto";
-import { PatchBloqDto } from "../dto/patch.bloq.dto";
+
 import debug from "debug";
+
+import { CreateBloqDto } from "../dto/create.bloq.dto";
+import { PatchBloqDto } from "../dto/patch.bloq.dto";
+import { PutBloqDto } from "../dto/put.bloq.dto";
 
 const log: debug.IDebugger = debug("app:bloqs:in-memory-dao");
 

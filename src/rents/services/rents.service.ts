@@ -1,8 +1,8 @@
-import RentsDao from "../daos/rent.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
+import RentsDao from "../daos/rent.dao";
 import { CreateRentDto } from "../dto/create.rent.dto";
-import { PutRentDto } from "../dto/put.rent.dto";
 import { PatchRentDto } from "../dto/patch.rent.dto";
+import { PutRentDto } from "../dto/put.rent.dto";
 
 class RentsService implements CRUD {
   async create(resource: CreateRentDto) {

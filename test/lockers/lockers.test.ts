@@ -1,10 +1,12 @@
 import * as fs from "fs";
-import app from "../../src/app";
-import request from "supertest";
+
 import { describe, test } from "@jest/globals";
+import request from "supertest";
+
+import app from "../../src/app";
+import lockerDao from "../../src/lockers/daos/locker.dao";
 import { CreateLockerDto } from "../../src/lockers/dto/create.locker.dto";
 import { PutLockerDto } from "../../src/lockers/dto/put.locker.dto";
-import lockerDao from "../../src/lockers/daos/locker.dao";
 
 describe("Lockers Endpoints Tests", function (): void {
   const lockers: CreateLockerDto[] = [];

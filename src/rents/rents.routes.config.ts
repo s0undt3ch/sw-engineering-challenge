@@ -1,7 +1,9 @@
+import express from "express";
+
 import { CommonRoutesConfig } from "../common/common.routes.config";
+
 import RentsController from "./controllers/rents.controller";
 import RentsMiddleware from "./middleware/rents.middleware";
-import express from "express";
 
 export class RentsRoutes extends CommonRoutesConfig {
   constructor(app: express.Application) {

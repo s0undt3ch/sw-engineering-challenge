@@ -1,6 +1,7 @@
-import express from "express";
-import bloqService from "../services/bloqs.service";
 import debug from "debug";
+import express from "express";
+
+import bloqService from "../services/bloqs.service";
 
 const log: debug.IDebugger = debug("app:bloqs-controller");
 class BloqsMiddleware {

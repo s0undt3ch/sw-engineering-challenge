@@ -1,6 +1,7 @@
-import express from "express";
-import rentService from "../services/rents.service";
 import debug from "debug";
+import express from "express";
+
+import rentService from "../services/rents.service";
 
 const log: debug.IDebugger = debug("app:rents-controller");
 class RentsMiddleware {

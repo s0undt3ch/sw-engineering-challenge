@@ -1,11 +1,11 @@
+import debug from "debug";
 import express from "express";
 
 // we import our newly created bloq services
-import bloqsService from "../services/bloqs.service";
 import lockersService from "../../lockers/services/lockers.service";
+import bloqsService from "../services/bloqs.service";
 
 // we use debug with a custom context as described in Part 1
-import debug from "debug";
 
 const log: debug.IDebugger = debug("app:bloqs-controller");
 

@@ -1,9 +1,11 @@
 import * as fs from "fs";
-import app from "../../src/app";
-import request from "supertest";
+
 import { describe, test } from "@jest/globals";
-import { CreateBloqDto } from "../../src/bloqs/dto/create.bloq.dto";
+import request from "supertest";
+
+import app from "../../src/app";
 import bloqDao from "../../src/bloqs/daos/bloq.dao";
+import { CreateBloqDto } from "../../src/bloqs/dto/create.bloq.dto";
 import { PutBloqDto } from "../../src/bloqs/dto/put.bloq.dto";
 
 describe("Bloqs Endpoints Tests", function (): void {

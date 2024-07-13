@@ -1,9 +1,11 @@
 import * as fs from "fs";
-import app from "../../src/app";
-import request from "supertest";
+
 import { describe, test } from "@jest/globals";
-import { CreateRentDto } from "../../src/rents/dto/create.rent.dto";
+import request from "supertest";
+
+import app from "../../src/app";
 import rentsDao from "../../src/rents/daos/rent.dao";
+import { CreateRentDto } from "../../src/rents/dto/create.rent.dto";
 
 describe("Rents Endpoints Tests", function (): void {
   const rents: CreateRentDto[] = [];

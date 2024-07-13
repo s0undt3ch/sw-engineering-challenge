@@ -1,8 +1,8 @@
-import BloqsDao from "../daos/bloq.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
+import BloqsDao from "../daos/bloq.dao";
 import { CreateBloqDto } from "../dto/create.bloq.dto";
-import { PutBloqDto } from "../dto/put.bloq.dto";
 import { PatchBloqDto } from "../dto/patch.bloq.dto";
+import { PutBloqDto } from "../dto/put.bloq.dto";
 
 class BloqsService implements CRUD {
   async create(resource: CreateBloqDto) {

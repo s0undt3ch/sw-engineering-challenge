@@ -1,7 +1,9 @@
+import express from "express";
+
 import { CommonRoutesConfig } from "../common/common.routes.config";
+
 import BloqsController from "./controllers/bloqs.controller";
 import BloqsMiddleware from "./middleware/bloqs.middleware";
-import express from "express";
 
 export class BloqsRoutes extends CommonRoutesConfig {
   constructor(app: express.Application) {

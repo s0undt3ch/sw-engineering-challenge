@@ -1,7 +1,9 @@
+import express from "express";
+
 import { CommonRoutesConfig } from "../common/common.routes.config";
+
 import LockersController from "./controllers/lockers.controller";
 import LockersMiddleware from "./middleware/lockers.middleware";
-import express from "express";
 
 export class LockersRoutes extends CommonRoutesConfig {
   constructor(app: express.Application) {
