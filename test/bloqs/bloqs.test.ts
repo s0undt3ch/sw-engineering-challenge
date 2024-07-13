@@ -59,6 +59,27 @@ describe("Bloqs Endpoints Tests", function (): void {
     expect(listRes.body.length).toBe(currentBloqCount + 1);
   });
 
+  test("POST /bloqs does not allow overriding if ID exists", async function (): Promise<void> {
+    expect(bloqs).not.toHaveLength(0);
+    const bloq = bloqs[1];
+    if (bloq === undefined) {
+      fail("Could not load a Bloq");
+    }
+    const bloqId: string = bloq.id;
+    const currentBloqCount = bloqs.length;
+    const data = {
+      id: bloqId,
+      title: "Riod Eixample 2",
+      address: "Pg. de Gràcia, 76, L'Eixample, 08008 Barcelona, Spain",
+    };
+    const postRes = await request(app).post(`/bloqs`).send(data);
+    expect(postRes.status).toBe(400);
+
+    const listRes = await request(app).get("/bloqs").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentBloqCount);
+  });
+
   test("PUT /bloqs/<bloqID> updates record", async function (): Promise<void> {
     const currentBloqCount = bloqs.length;
     expect(bloqs).not.toHaveLength(0);
@@ -121,27 +142,6 @@ describe("Bloqs Endpoints Tests", function (): void {
     const getRes2 = await request(app).get(`/bloqs/${bloqId}`).send();
     expect(getRes2.status).toBe(200);
     expect(getRes2.body.address).toEqual(data2["address"]);
-
-    const listRes = await request(app).get("/bloqs").send();
-    expect(listRes.status).toBe(200);
-    expect(listRes.body.length).toBe(currentBloqCount);
-  });
-
-  test("POST /bloqs does not allow overriding if ID exists", async function (): Promise<void> {
-    expect(bloqs).not.toHaveLength(0);
-    const bloq = bloqs[1];
-    if (bloq === undefined) {
-      fail("Could not load a Bloq");
-    }
-    const bloqId: string = bloq.id;
-    const currentBloqCount = bloqs.length;
-    const data = {
-      id: bloqId,
-      title: "Riod Eixample 2",
-      address: "Pg. de Gràcia, 76, L'Eixample, 08008 Barcelona, Spain",
-    };
-    const postRes = await request(app).post(`/bloqs`).send(data);
-    expect(postRes.status).toBe(400);
 
     const listRes = await request(app).get("/bloqs").send();
     expect(listRes.status).toBe(200);

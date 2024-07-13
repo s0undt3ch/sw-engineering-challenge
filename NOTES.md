@@ -77,3 +77,7 @@ tests, like, do we allow Bloq's to change their ID's? And if so, support updatin
 
 Added support and tests for `/lockers/occupancy/{free,occupied}` endpoints but the endpoints paths is up for
 discussion.
+
+## Lockers controller full(ish) coverage
+
+Initial test coverage for all supported HTTP methods in place.

@@ -10,7 +10,8 @@
     "dev": "NODE_ENV=development tsx watch src/server --unhandled-rejections=strict",
     "dev-debug": "export DEBUG=* && npm run dev",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test-debug": "export DEBUG=* && jest"
   },
   "author": "Pedro Algarvio",
   "license": "Apache-2.0",

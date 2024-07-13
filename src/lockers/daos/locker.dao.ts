@@ -53,7 +53,7 @@ class LockersDao {
       (obj: { id: string }) => obj.id === lockerId,
     );
     const currentLocker = this.lockers[objIndex];
-    const allowedPatchFields = ["title", "address"];
+    const allowedPatchFields = ["status", "isOccupied"];
     for (const field of allowedPatchFields) {
       if (field in locker) {
         // @ts-expect-error: Implicit Any

@@ -10,6 +10,14 @@ export class LockersRoutes extends CommonRoutesConfig {
   configureRoutes() {
     this.app.route(`/lockers`).get(LockersController.listLockers);
 
+    // WARN: Creating new lockers should be an administrative thing (apparently?)
+    this.app.post(`/lockers`, [
+      LockersMiddleware.validateLockerDoesNotExist,
+      LockersMiddleware.validateRequiredLockerPostBodyFields,
+      LockersMiddleware.validateBloqExists,
+      LockersController.createLocker,
+    ]);
+
     this.app
       .route(`/lockers/status/:status`)
       .all(LockersMiddleware.extractLockerStatus)
@@ -37,7 +45,7 @@ export class LockersRoutes extends CommonRoutesConfig {
       .delete(LockersController.removeLocker);
 
     this.app.put(`/lockers/:lockerId`, [
-      LockersMiddleware.validateRequiredLockerBodyFields,
+      LockersMiddleware.validateRequiredLockerPutBodyFields,
       LockersController.put,
     ]);
 

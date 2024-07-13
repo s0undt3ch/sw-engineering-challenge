@@ -3,6 +3,7 @@ import app from "../../src/app";
 import request from "supertest";
 import { describe, test } from "@jest/globals";
 import { CreateLockerDto } from "../../src/lockers/dto/create.locker.dto";
+import { PutLockerDto } from "../../src/lockers/dto/put.locker.dto";
 import lockerDao from "../../src/lockers/daos/locker.dao";
 
 describe("Lockers Endpoints Tests", function (): void {
@@ -91,5 +92,133 @@ describe("Lockers Endpoints Tests", function (): void {
     const res = await request(app).get("/lockers/occupancy/occupied").send();
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(3);
+  });
+
+  test("POST /lockers adds new record", async function (): Promise<void> {
+    const currentLockerCount = lockers.length;
+    const data = {
+      id: "c4705b02-45be-4fd7-8d82-d336df1fa494",
+      bloqId: "22ffa3c5-3a3d-4f71-81f1-cac18ffbc510",
+      status: "CLOSED",
+      isOccupied: false,
+    };
+    const postRes = await request(app).post(`/lockers`).send(data);
+    expect(postRes.status).toBe(201);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount + 1);
+  });
+
+  test("POST /lockers does not allow overriding if ID exists", async function (): Promise<void> {
+    expect(lockers).not.toHaveLength(0);
+    const locker = lockers[1];
+    if (locker === undefined) {
+      fail("Could not load a Locker");
+    }
+    const lockerId: string = locker.id;
+    const currentLockerCount = lockers.length;
+    const data = {
+      id: lockerId,
+      bloqId: "22ffa3c5-3a3d-4f71-81f1-cac18ffbc510",
+      status: "CLOSED",
+      isOccupied: false,
+    };
+    const postRes = await request(app).post(`/lockers`).send(data);
+    expect(postRes.status).toBe(400);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount);
+  });
+
+  test("POST /lockers fails on non existing lockerId", async function (): Promise<void> {
+    const currentLockerCount = lockers.length;
+    const data = {
+      id: "c4705b02-45be-4fd7-8d82-d336df1fa494",
+      bloqId: "22ffa3c5-3a3d-4f71-81f1-cac18ffbc511",
+      status: "CLOSED",
+      isOccupied: false,
+    };
+    const postRes = await request(app).post(`/lockers`).send(data);
+    expect(postRes.status).toBe(400);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount);
+  });
+
+  test("PUT /lockers/<lockerID> updates record", async function (): Promise<void> {
+    const currentLockerCount = lockers.length;
+    expect(lockers).not.toHaveLength(0);
+    const locker = lockers[0];
+    if (locker === undefined) {
+      fail("Could not load a Locker");
+    }
+    const lockerId: string = locker.id;
+    const data = {
+      bloqId: locker.bloqId,
+      status: "OPEN",
+      isOccupied: true,
+    };
+    const putRes = await request(app).put(`/lockers/${lockerId}`).send(data);
+    expect(putRes.status).toBe(204);
+
+    const getRes1 = await request(app).get(`/lockers/${lockerId}`).send();
+    expect(getRes1.status).toBe(200);
+    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes1.body.isOccupied).toEqual(true);
+
+    data["isOccupied"] = false;
+    const putRes2 = await request(app).put(`/lockers/${lockerId}`).send(data);
+    expect(putRes2.status).toBe(204);
+
+    const getRes2 = await request(app).get(`/lockers/${lockerId}`).send();
+    expect(getRes2.status).toBe(200);
+    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes2.body.isOccupied).toEqual(false);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount);
+  });
+
+  test("PATCH /lockers/<lockerID> updates record", async function (): Promise<void> {
+    const currentLockerCount = lockers.length;
+    expect(lockers).not.toHaveLength(0);
+    const locker = lockers[0];
+    if (locker === undefined) {
+      fail("Could not load a Locker");
+    }
+    const lockerId: string = locker.id;
+    const data1 = {
+      status: "OPEN",
+    };
+    const patchRes1 = await request(app)
+      .patch(`/lockers/${lockerId}`)
+      .send(data1);
+    expect(patchRes1.status).toBe(204);
+
+    const getRes1 = await request(app).get(`/lockers/${lockerId}`).send();
+    expect(getRes1.status).toBe(200);
+    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes1.body.isOccupied).toEqual(true);
+
+    const data2 = {
+      isOccupied: false,
+    };
+    const patchRes2 = await request(app)
+      .patch(`/lockers/${lockerId}`)
+      .send(data2);
+    expect(patchRes2.status).toBe(204);
+
+    const getRes2 = await request(app).get(`/lockers/${lockerId}`).send();
+    expect(getRes2.status).toBe(200);
+    expect(getRes1.body.status).toEqual("OPEN");
+    expect(getRes2.body.isOccupied).toEqual(false);
+
+    const listRes = await request(app).get("/lockers").send();
+    expect(listRes.status).toBe(200);
+    expect(listRes.body.length).toBe(currentLockerCount);
   });
 });
