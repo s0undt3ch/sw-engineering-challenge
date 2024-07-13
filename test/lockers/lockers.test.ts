@@ -132,7 +132,7 @@ describe("Lockers Endpoints Tests", function (): void {
     expect(listRes.body.length).toBe(currentLockerCount);
   });
 
-  test("POST /lockers fails on non existing lockerId", async function (): Promise<void> {
+  test("POST /lockers fails on non existing bloqId", async function (): Promise<void> {
     const currentLockerCount = lockers.length;
     const data = {
       id: "c4705b02-45be-4fd7-8d82-d336df1fa494",

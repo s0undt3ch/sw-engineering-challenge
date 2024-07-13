@@ -81,3 +81,8 @@ discussion.
 ## Lockers controller full(ish) coverage
 
 Initial test coverage for all supported HTTP methods in place.
+
+## Another Important Question
+
+Figure out how API versioning is best done in express land.
+Using `/vN` URL prefixes or "a la" GitHub with a header...
